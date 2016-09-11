@@ -1,5 +1,6 @@
 import sys, os, re
-from multiprocessing.dummy import Pool, cpu_count, Lock
+from multiprocessing.dummy import Pool, cpu_count
+from counter import Counter
 
 EXTENSIONS = ['png', 'jpg', 'jpeg', 'bmp']
 WORKER_COUNT = max(cpu_count() - 1, 1)
@@ -14,36 +15,7 @@ AUGMENTED_FILE_REGEX = re.compile('^.*(__[^_]+)+\\.[^\\.]+$')
 EXTENSION_REGEX = re.compile('|'.join(map(lambda n : '.*\\.' + n + '$', EXTENSIONS)))
 
 thread_pool = None
-
-class Counter:
-    def __init__(self):
-        self.lock = Lock()
-        self._processed = 0
-        self._error = 0
-        self._skipped_no_match = 0
-        self._skipped_augmented = 0
-
-    def processed(self):
-        with self.lock:
-            self._processed += 1
-
-    def error(self):
-        with self.lock:
-            self._error += 1
-
-    def skipped_no_match(self):
-        with self.lock:
-            self._skipped_no_match += 1
-
-    def skipped_augmented(self):
-        with self.lock:
-            self._skipped_augmented += 1
-
-    def get(self):
-        with self.lock:
-            return {'processed' : self._processed, 'error' : self._error, 'skipped_no_match' : self._skipped_no_match, 'skipped_augmented' : self._skipped_augmented}
-
-counter = Counter()
+counter = None
 
 def work(d, f):
     counter.processed()
@@ -62,6 +34,7 @@ if __name__ == '__main__':
         print 'Invalid image directory: {}'.format(image_dir)
         sys.exit(2)
 
+    counter = Counter()
     thread_pool = Pool(WORKER_COUNT)
     print 'Thread pool initialised with {} worker{}'.format(WORKER_COUNT, '' if WORKER_COUNT == 1 else 's')
 
