@@ -1,12 +1,17 @@
 import sys, os, re
+from os.path import isfile
 from multiprocessing.dummy import Pool, cpu_count
 from counter import Counter
 from ops.rotate import Rotate
+from ops.fliph import FlipH
+from ops.flipv import FlipV
+from ops.noise import Noise
+from ops.translate import Translate
 from skimage.io import imread, imsave
 
 EXTENSIONS = ['png', 'jpg', 'jpeg', 'bmp']
 WORKER_COUNT = max(cpu_count() - 1, 1)
-OPERATIONS = [Rotate]
+OPERATIONS = [Rotate, FlipH, FlipV, Translate, Noise]
 
 '''
 Augmented files will have names matching the regex below, eg
@@ -14,7 +19,7 @@ Augmented files will have names matching the regex below, eg
     original__rot90__crop1__flipv.jpg
 
 '''
-AUGMENTED_FILE_REGEX = re.compile('^.*(__[^_]+)+\\.[^\\.]+$')
+AUGMENTED_FILE_REGEX = re.compile('^.*(__.+)+\\.[^\\.]+$')
 EXTENSION_REGEX = re.compile('|'.join(map(lambda n : '.*\\.' + n + '$', EXTENSIONS)))
 
 thread_pool = None
@@ -28,14 +33,20 @@ def build_augmented_file_name(original_name, ops):
     return result + ext
 
 def work(d, f, ops):
-    in_path = os.path.join(d,f)
-    for op in ops:
-        img = imread(in_path)
-        img = op.process(img)
-        out_file_name = build_augmented_file_name(f, [op])
-        imsave(os.path.join(d, out_file_name), img)
+    try:
+        in_path = os.path.join(d,f)
+        for op in ops:
+            out_file_name = build_augmented_file_name(f, [op])
+            if isfile(os.path.join(d,out_file_name)):
+                continue
+            img = imread(in_path)
+            img = op.process(img)
+            out_file_name = build_augmented_file_name(f, [op])
+            imsave(os.path.join(d, out_file_name), img)
 
-    counter.processed()
+        counter.processed()
+    except:
+        print sys.exc_info()
 
 def process(dir, file, ops):
     thread_pool.apply_async(work, (dir, file, ops))
