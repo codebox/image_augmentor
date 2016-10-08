@@ -1,17 +1,18 @@
-import sys, os, re
+import sys, os, re, traceback
 from os.path import isfile
 from multiprocessing.dummy import Pool, cpu_count
 from counter import Counter
 from ops.rotate import Rotate
 from ops.fliph import FlipH
 from ops.flipv import FlipV
+from ops.zoom import Zoom
 from ops.noise import Noise
 from ops.translate import Translate
 from skimage.io import imread, imsave
 
 EXTENSIONS = ['png', 'jpg', 'jpeg', 'bmp']
 WORKER_COUNT = max(cpu_count() - 1, 1)
-OPERATIONS = [Rotate, FlipH, FlipV, Translate, Noise]
+OPERATIONS = [Rotate, FlipH, FlipV, Translate, Noise, Zoom]
 
 '''
 Augmented files will have names matching the regex below, eg
@@ -46,7 +47,7 @@ def work(d, f, ops):
 
         counter.processed()
     except:
-        print sys.exc_info()
+        traceback.print_exc(file=sys.stdout)
 
 def process(dir, file, ops):
     thread_pool.apply_async(work, (dir, file, ops))

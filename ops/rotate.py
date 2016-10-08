@@ -6,8 +6,7 @@ PREFIX = 'rot'
 class Rotate:
     def __init__(self, angle):
         self.angle = angle
-        self.code = \
-            PREFIX + str(angle)
+        self.code = PREFIX + str(angle)
 
     def process(self, img):
         return transform.rotate(img, -self.angle)
