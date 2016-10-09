@@ -3,7 +3,7 @@ from skimage import transform as tf
 import re
 
 CODE = 'trans'
-REGEX = re.compile(r"^" + CODE + "(?P<x_trans>[-0-9]+)_(?P<y_trans>[-0-9]+)")
+REGEX = re.compile(r"^" + CODE + "_(?P<x_trans>[-0-9]+)_(?P<y_trans>[-0-9]+)")
 
 class Translate:
     def __init__(self, x_trans, y_trans):

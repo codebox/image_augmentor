@@ -3,7 +3,7 @@ import numpy as np
 import re
 
 PREFIX = 'zoom'
-REGEX = re.compile(r"^" + PREFIX + "(?P<p1x>[-0-9]+)_(?P<p1y>[-0-9]+)_(?P<p2x>[-0-9]+)_(?P<p2y>[-0-9]+)")
+REGEX = re.compile(r"^" + PREFIX + "_(?P<p1x>[-0-9]+)_(?P<p1y>[-0-9]+)_(?P<p2x>[-0-9]+)_(?P<p2y>[-0-9]+)")
 PAD_VALUE = 0
 
 class Zoom:
@@ -13,7 +13,6 @@ class Zoom:
         self.p2x = p2x
         self.p2y = p2y
         self.code = PREFIX + str(p1x) + '_' + str(p1y) + '_' + str(p2x) + '_' + str(p2y)
-        print self.code
 
     def process(self, img):
         h = len(img)
@@ -31,8 +30,13 @@ class Zoom:
         y_pad_before = -min(0, self.p1y)
         y_pad_after  =  max(0, self.p2y-h)
 
-        padded_img = np.pad(cropped_img, ((y_pad_before, y_pad_after), (x_pad_before, x_pad_after)), 'constant')
-        return transform.resize(padded_img, (w,h))
+        padding = [(y_pad_before, y_pad_after), (x_pad_before, x_pad_after)]
+        is_colour = len(img.shape) == 3
+        if is_colour:
+            padding.append((0,0)) # colour images have an extra dimension
+
+        padded_img = np.pad(cropped_img, padding, 'constant')
+        return transform.resize(padded_img, (h,w))
 
     @staticmethod
     def match_code(code):

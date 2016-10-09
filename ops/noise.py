@@ -2,7 +2,7 @@ from skimage.util import random_noise
 import re
 
 CODE = 'noise'
-REGEX = re.compile(r"^" + CODE + "(?P<var>[.0-9]+)")
+REGEX = re.compile(r"^" + CODE + "_(?P<var>[.0-9]+)")
 
 class Noise:
     def __init__(self, var):

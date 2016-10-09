@@ -2,6 +2,7 @@ from skimage import transform
 import re
 
 PREFIX = 'rot'
+REGEX = re.compile(r"^" + PREFIX + "_(?P<angle>-?[0-9]+)")
 
 class Rotate:
     def __init__(self, angle):
@@ -13,6 +14,7 @@ class Rotate:
 
     @staticmethod
     def match_code(code):
-        if code.startswith(PREFIX):
-            angle = int(code[len(PREFIX):])
-            return Rotate(angle)
+        match = REGEX.match(code)
+        if match:
+            d = match.groupdict()
+            return Rotate(int(d['angle']))

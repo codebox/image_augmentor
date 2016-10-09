@@ -6,13 +6,14 @@ from ops.rotate import Rotate
 from ops.fliph import FlipH
 from ops.flipv import FlipV
 from ops.zoom import Zoom
+from ops.blur import Blur
 from ops.noise import Noise
 from ops.translate import Translate
 from skimage.io import imread, imsave
 
 EXTENSIONS = ['png', 'jpg', 'jpeg', 'bmp']
 WORKER_COUNT = max(cpu_count() - 1, 1)
-OPERATIONS = [Rotate, FlipH, FlipV, Translate, Noise, Zoom]
+OPERATIONS = [Rotate, FlipH, FlipV, Translate, Noise, Zoom, Blur]
 
 '''
 Augmented files will have names matching the regex below, eg
