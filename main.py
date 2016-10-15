@@ -34,24 +34,24 @@ def build_augmented_file_name(original_name, ops):
         result += '__' + op.code
     return result + ext
 
-def work(d, f, ops):
+def work(d, f, op_lists):
     try:
         in_path = os.path.join(d,f)
-        for op in ops:
-            out_file_name = build_augmented_file_name(f, [op])
+        for op_list in op_lists:
+            out_file_name = build_augmented_file_name(f, op_list)
             if isfile(os.path.join(d,out_file_name)):
                 continue
             img = imread(in_path)
-            img = op.process(img)
-            out_file_name = build_augmented_file_name(f, [op])
+            for op in op_list:
+                img = op.process(img)
             imsave(os.path.join(d, out_file_name), img)
 
         counter.processed()
     except:
         traceback.print_exc(file=sys.stdout)
 
-def process(dir, file, ops):
-    thread_pool.apply_async(work, (dir, file, ops))
+def process(dir, file, op_lists):
+    thread_pool.apply_async(work, (dir, file, op_lists))
 
 if __name__ == '__main__':
     if len(sys.argv) < 3:
@@ -64,18 +64,21 @@ if __name__ == '__main__':
         sys.exit(2)
 
     op_codes = sys.argv[2:]
-    ops = []
-    for op_code in op_codes:
-        op = None
-        for op in OPERATIONS:
-            op = op.match_code(op_code)
-            if op:
-                ops.append(op)
-                break
+    op_lists = []
+    for op_code_list in op_codes:
+        op_list = []
+        for op_code in op_code_list.split(','):
+            op = None
+            for op in OPERATIONS:
+                op = op.match_code(op_code)
+                if op:
+                    op_list.append(op)
+                    break
 
-        if not op:
-            print 'Unknown operation {}'.format(op_code)
-            sys.exit(3)
+            if not op:
+                print 'Unknown operation {}'.format(op_code)
+                sys.exit(3)
+        op_lists.append(op_list)
 
     counter = Counter()
     thread_pool = Pool(WORKER_COUNT)
@@ -91,7 +94,7 @@ if __name__ == '__main__':
                 if AUGMENTED_FILE_REGEX.match(file_name):
                     counter.skipped_augmented()
                 else:
-                    process(dir_name, file_name, ops)
+                    process(dir_name, file_name, op_lists)
             else:
                 counter.skipped_no_match()
 

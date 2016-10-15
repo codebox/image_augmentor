@@ -1,4 +1,4 @@
-from skimage.filter import gaussian
+from skimage.filters import gaussian
 from skimage.exposure import rescale_intensity
 import re
 
