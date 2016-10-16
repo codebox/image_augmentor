@@ -28,17 +28,17 @@ using the codes listed in the table below:
 |`blur`|Blurs the image by the specified amount|`blur_1.5`|
 
 
-Each transform argument results in a one additional output image being generated for each input image.
+Each transform argument results in one additional output image being generated for each input image.
 An argument may consist of one or more augmentation operations. Multiple operations within a single argument
 must be separated by commas, and the order in which the operations are performed will match the order in which they
 are specified within the argument.
 
 ### Examples
-Produce 2 output images for each input image, one which is flipped horizontally, and one which is flipped vertically
+Produce 2 output images for each input image, one of which is flipped horizontally, and one of which is flipped vertically:
 
     python main.py ./my_images fliph flipv
 
-Produce 1 output image for each input image, by first rotating the image by 90&deg; and then flipping it horizontally
+Produce 1 output image for each input image, by first rotating the image by 90&deg; and then flipping it horizontally:
 
     python main.py ./my_images rot_90,fliph
 
