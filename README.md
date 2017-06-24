@@ -18,7 +18,7 @@ The `transform` arguments determine what types of augmentation operations will b
 using the codes listed in the table below:
 
 |Code|Description|Example Values|
-|---|---|---|---|
+|---|---|------|
 |`fliph`|Horizontal Flip|`fliph`|
 |`flipv`|Vertical Flip|`flipv`|
 |`noise`|Adds random noise to the image|`noise_0.01`,`noise_0.5`|
