@@ -49,18 +49,14 @@ Mirrors the image around a vertical line running through its center
 
     python main.py ./my_images fliph
 
-<img style="border: 1px solid grey" style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw.png" alt="Original Image" width="150" height="150"/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__fliph.png" alt="Flipped Image" width="150" height="150"/>
+<img style="border: 1px solid grey" style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw.png" alt="Original Image" width="150" height="150"/> &nbsp; &nbsp; &nbsp; <img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__fliph.png" alt="Flipped Image" width="150" height="150"/>
 
 #### Vertical Flip
 Mirrors the image around a horizontal line running through its center
 
     python main.py ./my_images flipv
 
-<img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw.png" alt="Original Image" width="150" height="150"/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__flipv.png" alt="Flipped Image" width="150" height="150"/>
+<img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw.png" alt="Original Image" width="150" height="150"/> &nbsp; &nbsp; &nbsp; <img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__flipv.png" alt="Flipped Image" width="150" height="150"/>
 
 #### Noise
 Adds random noise to the image. The amount of noise to be added is specified by a floating-point numeric value that is included
@@ -68,22 +64,14 @@ in the transform argument, the numeric value must be greater than 0.
 
     python main.py ./my_images noise_0.01 noise_0.02 noise_0.05
 
-<img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw.png" alt="Original Image" width="150" height="150"/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__noise0.01.png" alt="Noisy Image" width="150" height="150"/>
-<img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__noise0.02.png" alt="Noisy Image" width="150" height="150"/>
-<img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__noise0.05.png" alt="Noisy Image" width="150" height="150"/>
+<img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw.png" alt="Original Image" width="150" height="150"/> &nbsp; &nbsp; &nbsp; <img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__noise0.01.png" alt="Noisy Image" width="150" height="150"/> &nbsp; &nbsp; &nbsp; <img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__noise0.02.png" alt="Noisy Image" width="150" height="150"/> &nbsp; &nbsp; &nbsp; <img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__noise0.05.png" alt="Noisy Image" width="150" height="150"/>
 
 #### Rotate
 Rotates the image. The angle of rotation is specified by a integer value that is included in the transform argument
 
     python main.py ./my_images rot_90 rot_180 rot_-90
 
-<img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw.png" alt="Original Image" width="150" height="150"/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__rot90.png" alt="Rotated Image" width="150" height="150"/>
-<img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__rot180.png" alt="Rotated Image" width="150" height="150"/>
-<img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__rot-90.png" alt="Rotated Image" width="150" height="150"/>
+<img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw.png" alt="Original Image" width="150" height="150"/> &nbsp; &nbsp; &nbsp; <img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__rot90.png" alt="Rotated Image" width="150" height="150"/> &nbsp; &nbsp; &nbsp; <img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__rot180.png" alt="Rotated Image" width="150" height="150"/> &nbsp; &nbsp; &nbsp; <img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__rot-90.png" alt="Rotated Image" width="150" height="150"/>
 
 #### Translate
 Performs a translation on the image. The size of the translation in the x and y directions are specified by integer values that
@@ -91,10 +79,7 @@ are included in the transform argument
 
     python main.py ./my_images trans_20_20 trans_0_100
 
-<img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw.png" alt="Original Image" width="150" height="150"/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__trans20_20.png" alt="Translated Image" width="150" height="150"/>
-<img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__trans0_100.png" alt="Translated Image" width="150" height="150"/>
+<img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw.png" alt="Original Image" width="150" height="150"/> &nbsp; &nbsp; &nbsp; <img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__trans20_20.png" alt="Translated Image" width="150" height="150"/> &nbsp; &nbsp; &nbsp; <img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__trans0_100.png" alt="Translated Image" width="150" height="150"/>
 
 #### Zoom/Stretch
 Zooms in (or out) to a particular area of the image. The top-left and bottom-right coordinates of the target region are
@@ -103,19 +88,11 @@ differs from that of the source image, stretching transformations can be perform
 
     python main.py ./my_images zoom_150_0_300_150 zoom_0_50_300_150 zoom_200_0_300_300
 
-<img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw.png" alt="Original Image" width="150" height="150"/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__zoom150_0_300_150.png" alt="Zoomed Image" width="150" height="150"/>
-<img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__zoom0_50_300_150.png" alt="Stretched Image" width="150" height="150"/>
-<img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__zoom200_0_300_300.png" alt="Stretched Image" width="150" height="150"/>
+<img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw.png" alt="Original Image" width="150" height="150"/> &nbsp; &nbsp; &nbsp; <img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__zoom150_0_300_150.png" alt="Zoomed Image" width="150" height="150"/> &nbsp; &nbsp; &nbsp; <img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__zoom0_50_300_150.png" alt="Stretched Image" width="150" height="150"/> &nbsp; &nbsp; &nbsp; <img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__zoom200_0_300_300.png" alt="Stretched Image" width="150" height="150"/>
 
 #### Blur
 Blurs the image. The amount of blurring is specified by a floating-point value included in the transform argument.
 
     python main.py ./my_images blur_1.0 blur_2.0 blur_4.0
 
-<img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw.png" alt="Original Image" width="150" height="150"/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__blur1.0.png" alt="Blurred Image" width="150" height="150"/>
-<img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__blur2.0.png" alt="Blurred Image" width="150" height="150"/>
-<img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__blur4.0.png" alt="Blurred Image" width="150" height="150"/>
+<img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw.png" alt="Original Image" width="150" height="150"/> &nbsp; &nbsp; &nbsp; <img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__blur1.0.png" alt="Blurred Image" width="150" height="150"/> &nbsp; &nbsp; &nbsp; <img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__blur2.0.png" alt="Blurred Image" width="150" height="150"/> &nbsp; &nbsp; &nbsp; <img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__blur4.0.png" alt="Blurred Image" width="150" height="150"/>
