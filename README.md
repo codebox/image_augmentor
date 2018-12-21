@@ -67,7 +67,7 @@ in the transform argument, the numeric value must be greater than 0.
 <img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw.png" alt="Original Image" width="150" height="150"/> &nbsp; &nbsp; &nbsp; <img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__noise0.01.png" alt="Noisy Image" width="150" height="150"/> &nbsp; &nbsp; &nbsp; <img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__noise0.02.png" alt="Noisy Image" width="150" height="150"/> &nbsp; &nbsp; &nbsp; <img style="border: 1px solid grey" src="http://codebox.net/graphics/image_augmentor/macaw__noise0.05.png" alt="Noisy Image" width="150" height="150"/>
 
 #### Rotate
-Rotates the image. The angle of rotation is specified by a integer value that is included in the transform argument
+Rotates the image. The angle of rotation is specified by an integer value that is included in the transform argument
 
     python main.py ./my_images rot_90 rot_180 rot_-90
 
