@@ -16,6 +16,12 @@ WORKER_COUNT = max(cpu_count() - 1, 1)
 OPERATIONS = [Rotate, FlipH, FlipV, Translate, Noise, Zoom, Blur]
 
 '''
+Issue
+:   1. This Program Python 2.7 version
+    2. You may need this -> download http://scikit-image.org/download for "from skimage import transform"
+    3. Other things -> (pip : scipy, numpy, scikit-image | easy_install : six)
+    4. If you using 3.x version Python, look at the 177 line this code 
+    
 Augmented files will have names matching the regex below, eg
 
     original__rot90__crop1__flipv.jpg
@@ -103,3 +109,47 @@ if __name__ == '__main__':
     thread_pool.join()
 
     print counter.get()
+'''
+End To 2.7 Version
+'''
+    
+'''
+Change Code's For 3.x Version Python (# : line numberic, @ : Original, $ : Change Code)
+
+# 3 line
+    @ from multiprocessing.dummy import Pool, cpu_count
+    $ from multiprocessing.dummy import Pool
+      import multiprocessing as mp
+# 15 line
+    @ WORKER_COUNT = max(cpu_count() - 1, 1)
+    $ WORKER_COUNT = max(mp.cpu_count() - 1, 1)
+# 58 line
+    @ print 'Usage: {} <image directory> <operation> (<operation> ...)'.format(sys.argv[0])
+    $ print ('Usage: {} <image directory> <operation> (<operation> ...)'.format(sys.argv[0]))
+# 59 line
+    @ sys.exit(1)
+    $ os._exit(1)
+# 63 line
+    @ print 'Invalid image directory: {}'.format(image_dir)
+    $ print ('Invalid image directory: {}'.format(image_dir))
+# 64 line
+    @ sys.exit(2)
+    $ os._exit(2)
+# 79 line
+    @ print 'Unknown operation {}'.format(op_code)
+    $ print ('Unknown operation {}'.format(op_code))
+# 85 line
+    @ print 'Thread pool initialised with {} worker{}'.format(WORKER_COUNT, '' if WORKER_COUNT == 1 else 's')
+    $ print ('Thread pool initialised with {} worker{}'.format(WORKER_COUNT, '' if WORKER_COUNT == 1 else 's'))
+# 90 line
+    @ print 'Processing {}...'.format(dir_name)
+    $ print ('Processing {}...'.format(dir_name))
+# 101 line
+    @ print "Waiting for workers to complete..."
+    $ print ("Waiting for workers to complete...")
+# 105 line
+    @ print counter.get()
+    $ print (counter.get())
+    
+Abuout 3.x version other issue -> emails : laguz1254@gmail.com
+'''
