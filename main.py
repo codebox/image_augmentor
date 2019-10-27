@@ -1,6 +1,6 @@
 import sys, os, re, traceback
 from os.path import isfile
-from multiprocessing import Pool, cpu_count
+from multiprocessing.dummy import Pool
 from counter import Counter
 from ops.rotate import Rotate
 from ops.fliph import FlipH
@@ -12,7 +12,7 @@ from ops.translate import Translate
 from skimage.io import imread, imsave
 
 EXTENSIONS = ['png', 'jpg', 'jpeg', 'bmp']
-WORKER_COUNT = max(cpu_count() - 1, 1)
+WORKER_COUNT = max(os.cpu_count() - 1, 1)
 OPERATIONS = [Rotate, FlipH, FlipV, Translate, Noise, Zoom, Blur]
 
 '''
