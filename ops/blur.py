@@ -11,8 +11,8 @@ class Blur:
         self.sigma = sigma
 
     def process(self, img):
-        is_colour = len(img.shape)==3
-        return rescale_intensity(gaussian(img, sigma=self.sigma, multichannel=is_colour))
+        is_colour = len(img.shape) == 3
+        return gaussian(img, sigma=self.sigma, channel_axis=-1 if is_colour else None)
 
     @staticmethod
     def match_code(code):
