@@ -10,6 +10,8 @@ from ops.blur import Blur
 from ops.noise import Noise
 from ops.translate import Translate
 from skimage.io import imread, imsave
+import numpy as np
+from skimage.exposure import rescale_intensity
 
 EXTENSIONS = ['png', 'jpg', 'jpeg', 'bmp']
 WORKER_COUNT = max(os.cpu_count() - 1, 1)
@@ -36,14 +38,18 @@ def build_augmented_file_name(original_name, ops):
 
 def work(d, f, op_lists):
     try:
-        in_path = os.path.join(d,f)
+        in_path = os.path.join(d, f)
         for op_list in op_lists:
             out_file_name = build_augmented_file_name(f, op_list)
-            if isfile(os.path.join(d,out_file_name)):
+            if isfile(os.path.join(d, out_file_name)):
                 continue
             img = imread(in_path)
             for op in op_list:
                 img = op.process(img)
+            
+            # Convert image data type to uint8 before saving
+            img = rescale_intensity(img, out_range=(0, 255))
+            img = img.astype(np.uint8)
             imsave(os.path.join(d, out_file_name), img)
 
         counter.processed()
